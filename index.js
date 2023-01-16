@@ -1,7 +1,7 @@
 const { argv, exit } = require("process");
 const prompts = require('prompts');
 const fs = require('fs');
-let config = require("./nyxx.config.json");
+let config = require("..../nyxx.config.json");
 
 async function check() {
     if (argv[2] === "init") {

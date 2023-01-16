@@ -3,8 +3,6 @@ const { GatewayIntentBits } = require("discord.js");
 const discord = require("discord.js");
 const client = new discord.Client({ intents: [GatewayIntentBits.Guilds] });
 
-nyxx.add.guild("test");
-
 client.on("ready", async () => {
     console.log("Ready!");
 });
