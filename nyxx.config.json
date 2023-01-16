@@ -1,0 +1,10 @@
+{
+    "database": "local guilds/db.json",
+    "prefix": "!",
+    "default": {
+        "prefix": "!",
+        "welcomeChannel": null,
+        "welcomeMessage": null,
+        "welcomeEnabled": false
+    }
+}

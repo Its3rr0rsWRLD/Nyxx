@@ -1,0 +1,6 @@
+node_modules
+guilds
+db.json
+nyxx.config.json
+update.js
+publish.js

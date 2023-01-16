@@ -1,6 +1,6 @@
 {
   "name": "nyxx",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Create a dashboard for your users to interact with your Discord bot!",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ThatError404/Nyxx.git"
+    "url": "git+https://github.com/ThatError404/Nyxx"
   },
   "keywords": [
     "nyxx",
