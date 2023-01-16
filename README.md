@@ -32,10 +32,7 @@
 ## ❤️ Credits
 
 - Error - Backend Developer
-![Error](https://github-readme-stats.vercel.app/api?username=ThatError404&theme=tokyonight)
 
 - Kingerious - Backend Developer
-![Kingerious](https://github-readme-stats.vercel.app/api?username=MDxWARRIORxOP&theme=tokyonight)
 
 - Eruption - Frontend Developer
-![Eruption](https://github-readme-stats.vercel.app/api?username=EruptionGuy&theme=tokyonight)
