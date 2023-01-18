@@ -2,7 +2,8 @@ const { argv, exit } = require("process");
 const prompts = require("prompts");
 const fs = require("fs");
 const { join } = require("path");
-const config = require(join(__dirname, "./nyxx.config.json"));
+
+const config = global.config
 
 async function check() {
   if (argv[2] === "init") {
@@ -183,7 +184,14 @@ module.exports = {
         let db = JSON.parse(fs.readFileSync(global.dbl));
 
         return db;
-      }
+      },
+
+      config: function (file) {
+        if (!fs.existsSync(file))
+          throw new Error("The path you provided does not exist!");
+        
+        global.config = json.parse(fs.readFileSync(file) || {});
+      },
     }
   },
 };
