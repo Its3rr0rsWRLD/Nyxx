@@ -75,7 +75,7 @@ module.exports = {
       throw new Error("You must have a prefix in your nyxx.config.json file!");
 
     if (config.prefix.startsWith("global")) {
-      let split = config.prefix.split(" ");
+      global.dbl = config.prefix.split(" ");
       if (!split[1]) throw new Error("You must provide a prefix!");
 
       return split[1];
@@ -84,48 +84,106 @@ module.exports = {
     }
   },
 
-  command: function (guild, command) {
-    if (!config.commands)
+  guild: function (guild) {
+    if (!config.database)
       throw new Error(
-        "You must have a commands object in your nyxx.config.json file!"
+        "You must have a database in your nyxx.config.json file!"
       );
+    if (!config.default)
+      throw new Error(
+        "You must have a default object in your nyxx.config.json file!"
+      );
+    
+    let db = JSON.parse(fs.readFileSync(global.dbl));
 
-    if (config.commands[command]) {
-      return config.commands[command];
-    } else {
+    if (!db[guild]) {
       return false;
     }
-  },
 
-  exists: {
-    // Check if a guild exists in the database.
-    guild: function (guild) {},
-  },
+    return {
+      get: function (guild) {
+        if (!config.database)
+          throw new Error(
+            "You must have a database in your nyxx.config.json file!"
+          );
 
-  add: {
-    guild: function (guild) {
-      if (!config.database)
-        throw new Error(
-          "You must have a database in your nyxx.config.json file!"
+        let db = JSON.parse(fs.readFileSync(global.dbl));
+
+        if (!db[guild]) {
+          return false;
+        }
+
+        return db[guild];
+      },
+
+      update: function (guild, json) {
+        if (!config.database)
+          throw new Error(
+            "You must have a database in your nyxx.config.json file!"
+          );
+
+        let contents = fs.readFileSync(global.dbl);
+
+        // Make sure to keep everything else and don't overwrite it.
+        fs.writeFileSync(
+          global.dbl,
+          JSON.stringify({
+            ...JSON.parse(contents),
+            [guild]: json,
+          })
         );
-      if (!config.default)
-        throw new Error(
-          "You must have a default object in your nyxx.config.json file!"
+      },
+
+      delete: function (guild) {
+        if (!config.database)
+          throw new Error(
+            "You must have a database in your nyxx.config.json file!"
+          );
+
+        let contents = fs.readFileSync(global.dbl);
+
+        // Make sure to keep everything else and don't overwrite it.
+        fs.writeFileSync(
+          global.dbl,
+          JSON.stringify({
+            ...JSON.parse(contents),
+            [guild]: null,
+          })
         );
+      },
 
-      // DBL: Database Location
-      global.dbl = config.database.split(" ")[1];
+      add: function (guild) {
+        if (!config.database)
+          throw new Error(
+            "You must have a database in your nyxx.config.json file!"
+          );
+        if (!config.default)
+          throw new Error(
+            "You must have a default object in your nyxx.config.json file!"
+          );
 
-      let contents = fs.readFileSync(global.dbl);
+        let contents = fs.readFileSync(global.dbl);
 
-      // Make sure to keep everything else and don't overwrite it.
-      fs.writeFileSync(
-        global.dbl,
-        JSON.stringify({
-          ...JSON.parse(contents),
-          [guild]: config.default,
-        })
-      );
-    },
+        // Make sure to keep everything else and don't overwrite it.
+        fs.writeFileSync(
+          global.dbl,
+          JSON.stringify({
+            ...JSON.parse(contents),
+            [guild]: config.default,
+          })
+        );
+      },
+
+      list: function () {
+        if (!config.database)
+          throw new Error(
+            "You must have a database in your nyxx.config.json file!"
+          );
+
+        let db = JSON.parse(fs.readFileSync(global.dbl));
+
+        return db;
+      }
+    }
   },
 };

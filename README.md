@@ -9,6 +9,8 @@
   </p>
 </div>
 
+## 📝 Note: This project is still in development and is not ready for use.
+
 ## 📃 Features
 
 - 🗝️ Integrable with any bot
@@ -34,5 +36,3 @@
 - Error - Backend Developer
 
 - Kingerious - Backend Developer
-
-- Eruption - Frontend Developer
