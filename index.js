@@ -3,7 +3,13 @@ const prompts = require("prompts");
 const fs = require("fs");
 const { join } = require("path");
 
-const config = global.config
+if (global.config === undefined) {
+  throw new Error(
+    "You must specify a config file using config([filename]) in your js file!"
+  );
+} else {
+  const config = global.config;
+}
 
 async function check() {
   if (argv[2] === "init") {
