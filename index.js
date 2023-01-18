@@ -161,7 +161,7 @@ module.exports = {
         );
       },
 
-      add: function (guild) {
+      add: function (guild, idk) {
         if (!config.database)
           throw new Error(
             "You must have a database in your nyxx.config.json file!"
@@ -170,6 +170,9 @@ module.exports = {
           throw new Error(
             "You must have a default object in your nyxx.config.json file!"
           );
+        if (!idk || idk === null) {
+          idk = config.default;
+        }
 
         let contents = fs.readFileSync(global.dbl);
 
