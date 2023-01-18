@@ -3,11 +3,14 @@ const prompts = require("prompts");
 const fs = require("fs");
 const { join } = require("path");
 
-if (!fs.existsSync(join(__dirname, "nyxx.config.json"))) {
+let dir = __dirname.split("node_modules")[0];
+
+if (!fs.existsSync(join(dir + "nyxx.config.json"))) {
   throw new Error(
-    "You need a nyxx.config.json file to run nyxx!" + __dirname
+    "You need a nyxx.config.json file to run nyxx!" + dir + "nyxx.config.json"
   );
 }
+
 async function check() {
   if (argv[2] === "init") {
     const name = await prompts({

@@ -1,6 +1,6 @@
 {
   "name": "nyxx",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Create a dashboard for your users to interact with your Discord bot!",
   "main": "index.js",
   "scripts": {
