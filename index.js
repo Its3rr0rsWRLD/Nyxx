@@ -88,7 +88,7 @@ module.exports = {
       if (!fs.existsSync(split[1]))
         throw new Error("The path you provided does not exist!");
 
-      global.db = require("./" + split[1]);
+      global.db = require(join(dir + split[1]));
     }
   },
 
@@ -97,7 +97,7 @@ module.exports = {
     if (guildCheck(guild) === 2) {
       return config.default.prefix;
     }
-    
+
     if (!config.prefix)
       throw new Error("You must have a prefix in your nyxx.config.json file!");
 
