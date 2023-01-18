@@ -3,14 +3,11 @@ const prompts = require("prompts");
 const fs = require("fs");
 const { join } = require("path");
 
-if (global.config === undefined) {
+if (!fs.existsSync(join(__dirname, "nyxx.config.json"))) {
   throw new Error(
-    "You must specify a config file using config([filename]) in your js file!"
+    "You need a nyxx.config.json file to run nyxx!" + __dirname
   );
-} else {
-  const config = global.config;
 }
-
 async function check() {
   if (argv[2] === "init") {
     const name = await prompts({
