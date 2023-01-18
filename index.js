@@ -89,6 +89,7 @@ module.exports = {
         throw new Error("The path you provided does not exist!");
 
       global.db = require(join(dir + split[1]));
+      global.dbl = join(dir + split[1]);
     }
   },
 
