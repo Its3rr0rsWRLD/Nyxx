@@ -13,6 +13,20 @@ if (!fs.existsSync(join(dir + "nyxx.config.json"))) {
 
 const config = require(join(dir + "nyxx.config.json"));
 
+function guildCheck(guild) {
+  if (!global.db[guild]) {
+    fs.writeFileSync(
+      global.dbl,
+      JSON.stringify({
+        ...JSON.parse(fs.readFileSync(global.dbl)),
+        [guild]: config.default,
+      })
+    );
+
+    return 2;
+  }
+}
+
 async function check() {
   if (argv[2] === "init") {
     const name = await prompts({
@@ -80,6 +94,10 @@ module.exports = {
 
   // Get the prefix of a guild.
   prefix: function (guild) {
+    if (guildCheck(guild) === 2) {
+      return config.default.prefix;
+    }
+    
     if (!config.prefix)
       throw new Error("You must have a prefix in your nyxx.config.json file!");
 
@@ -170,13 +188,9 @@ module.exports = {
           throw new Error(
             "You must have a default object in your nyxx.config.json file!"
           );
-        if (!idk || idk === null) {
-          idk = config.default;
-        }
 
         let contents = fs.readFileSync(global.dbl);
 
-        // Make sure to keep everything else and don't overwrite it.
         fs.writeFileSync(
           global.dbl,
           JSON.stringify({
