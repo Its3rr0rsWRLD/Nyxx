@@ -11,6 +11,8 @@ if (!fs.existsSync(join(dir + "nyxx.config.json"))) {
   );
 }
 
+const config = require(join(dir + "nyxx.config.json"));
+
 async function check() {
   if (argv[2] === "init") {
     const name = await prompts({
