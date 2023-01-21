@@ -1,6 +1,6 @@
 {
   "name": "nyxx",
-  "version": "1.0.19",
+  "version": "1.1.7",
   "description": "Create a dashboard for your users to interact with your Discord bot!",
   "main": "index.js",
   "scripts": {
@@ -30,7 +30,11 @@
   },
   "homepage": "https://github.com/ThatError404/Nyxx#readme",
   "dependencies": {
+    "commander": "^10.0.0",
     "discord.js": "^14.7.1",
     "prompts": "^2.4.2"
+  },
+  "bin": {
+    "nyxx": "./cli.js"
   }
 }

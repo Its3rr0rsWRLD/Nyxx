@@ -27,52 +27,6 @@ function guildCheck(guild) {
   }
 }
 
-async function check() {
-  if (argv[2] === "init") {
-    const name = await prompts({
-      type: "text",
-      name: "value",
-      message: "What is the name of your project?",
-    });
-
-    const dashboard = await prompts({
-      type: "select",
-      name: "value",
-      message: "What dashboard would you like to use?",
-      choices: [
-        { title: "None (Make your own)", value: "none" },
-        { title: "(Add Later)", value: "addlater" },
-      ],
-    });
-
-    const dashbase = await prompts({
-      type: "select",
-      name: "value",
-      message:
-        "What database would you like to use for configurations with your bot for guilds?",
-      choices: [
-        { title: "MongoDB", value: "mongo" },
-        { title: "Local JSON", value: "json" },
-      ],
-    });
-
-    if (dashboard.value === "preset") {
-      const preset = await prompts({
-        type: "select",
-        name: "value",
-        message: "Which preset?",
-        choices: [
-          { title: "Soft", value: "soft" },
-          { title: "6PG", value: "6pg" },
-          { title: "Custom", value: "custom" },
-        ],
-      });
-    }
-  }
-}
-
-check();
-
 module.exports = {
   sync: function (client) {
     if (!client) throw new Error("You must provide a client to sync!");
@@ -220,4 +174,6 @@ module.exports = {
       },
     }
   },
+
+  // 
 };
