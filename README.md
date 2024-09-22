@@ -4,12 +4,12 @@
 
   <h3 align="center">Nyxx</h3>
 
-> :warning: Old repo! Doesn't work, commit if you would like!
-
   <p align="center">
   Nyxx helps you quickly and easily create a dashboard for your Discord bot, communicate with your bot to configure aspects of it for specific servers, and more!
   </p>
 </div>
+
+> :warning: Old repo! Doesn't work, commit if you would like!
 
 ## 📝 Note: This project is still in development and is not ready for use.
 
